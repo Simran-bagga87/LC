@@ -223,32 +223,11 @@ input::placeholder {
     """,
     unsafe_allow_html=True
 )
-
 st.markdown("""
 <style>
-
-/* Titles */
-h1, h2, h3, h4, h5, h6 {
+body {
     color: white !important;
 }
-
-/* Normal text + markdown */
-p, span, div[data-testid="stMarkdownContainer"] {
-    color: white !important;
-}
-
-/* Labels of inputs */
-label {
-    color: white !important;
-}
-
-/* Streamlit headers + captions */
-[data-testid="stHeader"],
-[data-testid="stText"],
-[data-testid="stCaption"] {
-    color: white !important;
-}
-
 </style>
 """, unsafe_allow_html=True)
 st.header("ACT")
