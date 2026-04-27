@@ -6,8 +6,8 @@ import os
 from supabase import create_client
 
 supabase = create_client(
-    st.secrets["SUPABASE_URL"],
-    st.secrets["SUPABASE_KEY"]
+    st.secrets["https://ahzgbjjlevkwzxqseuaj.supabase.co"],
+    st.secrets["sb_publishable_cbIu5rKDnKWqDOIVJ9l4Sg_NY6tyMlR"]
 )
 
 ## Transform 
@@ -28,6 +28,28 @@ def transform(data):
         data["Slot 4"],
         data["Slot 5"]
     )
+
+def insert_into_db(data, state):
+
+
+        table = "s_e_karnataka" if state == "Karnataka" else "s_e_mumbai"
+
+        supabase.table(table).insert({
+        "name_of_establishment": data["Name of Establishment"],
+        "type_of_establishment": data["Type of Establishment"],
+        "category_of_employer": data["Category of Employer"],
+        "business_or_trade_type": data["Business or Trade Type"],
+        "manager": data["Manager"],
+        "date_of_opening": str(data["Date of Opening of Business"]),
+        "work_start_time": data["Work Start Time"].strftime("%H:%M"),
+        "work_end_time": data["Work End Time"].strftime("%H:%M"),
+        "intervals": data["Intervals"],
+        "slot1": data["Slot 1"],
+        "slot2": data["Slot 2"],
+        "slot3": data["Slot 3"],
+        "slot4": data["Slot 4"],
+        "slot5": data["Slot 5"],
+    }).execute()
 
 # establishment form
 def shop_e_establishment():
@@ -227,38 +249,18 @@ if name_of_act=="Shops and Establishments Act 2017":
     "Slot 3": slot3,
     "Slot 4": slot4,
     "Slot 5":slot5
-}
+    }
 
 
 # ----------------------------
 # INSERT FUNCTION
 # ----------------------------
-    def insert_into_db(data, state):
+    
 
+            
 
-        table = "s_e_karnataka" if state == "Karnataka" else "s_e_mumbai"
-
-        supabase.table(table).insert({
-        "name_of_establishment": data["Name of Establishment"],
-        "type_of_establishment": data["Type of Establishment"],
-        "category_of_employer": data["Category of Employer"],
-        "business_or_trade_type": data["Business or Trade Type"],
-        "manager": data["Manager"],
-        "date_of_opening": str(data["Date of Opening of Business"]),
-        "work_start_time": data["Work Start Time"].strftime("%H:%M"),
-        "work_end_time": data["Work End Time"].strftime("%H:%M"),
-        "intervals": data["Intervals"],
-        "slot1": data["Slot 1"],
-        "slot2": data["Slot 2"],
-        "slot3": data["Slot 3"],
-        "slot4": data["Slot 4"],
-        "slot5": data["Slot 5"],
-    }).execute()
-
-        
-
-    insert_into_db(df, state)
-    st.write("form submitted")
+        insert_into_db(df, state)
+        st.write("form submitted")
 
 
 
