@@ -223,7 +223,51 @@ input::placeholder {
     """,
     unsafe_allow_html=True
 )
+st.markdown("""
+<style>
 
+/* ---------- GLOBAL TEXT COLOR ---------- */
+html, body, [class*="css"]  {
+    color: white !important;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+    color: white !important;
+}
+
+/* Labels */
+label {
+    color: white !important;
+}
+
+/* Markdown + normal text */
+p, span, div {
+    color: white !important;
+}
+
+/* Button text */
+.stButton button {
+    color: white !important;
+}
+
+/* Selectbox text */
+div[data-baseweb="select"] * {
+    color: white !important;
+}
+
+/* Date + Time text */
+input {
+    color: white !important;
+}
+
+/* Sidebar text (important) */
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
 st.header("ACT")
 name_of_act = st.selectbox("Name of the Act for Compliance",["test","Shops and Establishments Act 2017"])
 
