@@ -6,8 +6,8 @@ import os
 from supabase import create_client
 
 supabase = create_client(
-    st.secrets["https://ahzgbjjlevkwzxqseuaj.supabase.co"],
-    st.secrets["sb_publishable_cbIu5rKDnKWqDOIVJ9l4Sg_NY6tyMlR"]
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_KEY"]
 )
 
 ## Transform 
