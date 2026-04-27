@@ -224,45 +224,28 @@ input::placeholder {
     unsafe_allow_html=True
 )
 st.markdown("""
+st.markdown("""
 <style>
-
-/* ---------- GLOBAL TEXT COLOR ---------- */
-html, body, [class*="css"]  {
-    color: white !important;
-}
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
     color: white !important;
 }
 
-/* Labels */
+/* Normal text + markdown */
+p, span, div[data-testid="stMarkdownContainer"] {
+    color: white !important;
+}
+
+/* Labels of inputs */
 label {
     color: white !important;
 }
 
-/* Markdown + normal text */
-p, span, div {
-    color: white !important;
-}
-
-/* Button text */
-.stButton button {
-    color: white !important;
-}
-
-/* Selectbox text */
-div[data-baseweb="select"] * {
-    color: white !important;
-}
-
-/* Date + Time text */
-input {
-    color: white !important;
-}
-
-/* Sidebar text (important) */
-section[data-testid="stSidebar"] * {
+/* Streamlit headers + captions */
+[data-testid="stHeader"],
+[data-testid="stText"],
+[data-testid="stCaption"] {
     color: white !important;
 }
 
